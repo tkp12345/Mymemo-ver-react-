@@ -37,9 +37,13 @@ class App extends Component {
             const habits  = this.state.habits.filter(item => item.id != habit.id );
             this.setState({habits});
         };
-
+        //새로운 이름을 받아 habit 에 추가한다 
+        handleAdd = name => { 
+          //새로운 배열에 복사 
+          const habits = [...this.state.habits, {id: Date.now(), name, count: 0 }];
+          this.setState({habits});
+        }
   render() {
-    
     return (
       <>
     <Navbar 
@@ -50,6 +54,7 @@ class App extends Component {
     onIncrement ={this.handleIncrement}
     onDecrement ={this.handleDecrement}
     onDelete ={this.handleDelete}
+    onAdd={this.handleAdd}
    />
     </>
     );
